@@ -22,7 +22,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 scene = new THREE.Scene();
-    
+
 // initialize scenic elements
 
 // background / foreground
@@ -40,17 +40,11 @@ new THREE.TextureLoader().load(
     var foregroundMesh = new THREE.Mesh(frontPlane, fgMaterial);
     foregroundMesh.position.z = 5;
     foregroundMesh.material.side = THREE.DoubleSide;
-    scene.add(foregroundMesh);        
-    
+    scene.add(foregroundMesh);
+
     var cubeGeom = new THREE.BoxGeometry(20, 20, 20);
     var cubeMat = [
-//       new THREE.MeshBasicMaterial({color: 0xffaaff}),
-//       new THREE.MeshBasicMaterial({color: 0xaaffff}),
-//       new THREE.MeshBasicMaterial({color: 0xffffaa}),
-//       new THREE.MeshBasicMaterial({color: 0xaaaaff}),
-//       new THREE.MeshBasicMaterial({color: 0xffaaaa}),
-//       new THREE.MeshBasicMaterial({color: 0xaaffaa})
-      
+
       new THREE.MeshBasicMaterial({map: bgTexture}),
       new THREE.MeshBasicMaterial({map: bgTexture}),
       new THREE.MeshBasicMaterial({map: bgTexture}),
@@ -65,49 +59,49 @@ new THREE.TextureLoader().load(
     scene.add(cube);
   }
 );
-    
+
 camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 1;
 
 // great dodecahedron
 var mirrorCamera = new THREE.CubeCamera(0.1, 1000, 512);
 scene.add(mirrorCamera);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var vertices = [
 0, 0, 0,
-0, 0.809, 0.5,    
--0.5, 0, 0.809, 
-0.5, 0, 0.809,    
+0, 0.809, 0.5,
+-0.5, 0, 0.809,
+0.5, 0, 0.809,
 0.809, 0.5, 0,
 0.809, -0.5, 0,
 0, -0.809, 0.5,
@@ -203,27 +197,27 @@ var indices = [
 12, 5, 14,
 5, 11, 14
 ];
-    
+
 var dodecGeom = new THREE.PolyhedronGeometry(vertices, indices, 2, 0);
-// 
-// for(var i = 0; i < dodecGeom.faces.length; i++){      
-// 
+//
+// for(var i = 0; i < dodecGeom.faces.length; i++){
+//
 //   dodecGeom.faceVertexUvs[0].push([
 //     new THREE.Vector2( 0,0 ),
 //     new THREE.Vector2( 0,1 ),
 //     new THREE.Vector2( 1,1),
 //   ]);
 // }
-// 
+//
 // dodecGeom.computeFaceNormals();
 // dodecGeom.dynamic = true;
 // dodecGeom.uvsNeedUpdate = true;
 
 
-var dodecMaterial = new THREE.MeshBasicMaterial( 
-  { 
+var dodecMaterial = new THREE.MeshBasicMaterial(
+  {
     envMap: mirrorCamera.renderTarget
-  } 
+  }
 );
 
 var colorMaterial = new THREE.MeshBasicMaterial({color: 0xaaaaff});
@@ -264,7 +258,7 @@ $(renderer.domElement).on('mousedown', function(e) {
     };
 
     if(isDragging) {
-            
+
         var deltaRotationQuaternion = new THREE.Quaternion()
             .setFromEuler(new THREE.Euler(
                 toRadians(deltaMove.y * 1),
@@ -272,10 +266,10 @@ $(renderer.domElement).on('mousedown', function(e) {
                 0,
                 'XYZ'
             ));
-        
+
         dodec.quaternion.multiplyQuaternions(deltaRotationQuaternion, dodec.quaternion);
     }
-    
+
     previousMousePosition = {
         x: e.offsetX,
         y: e.offsetY
@@ -296,7 +290,7 @@ function render() {
   dodec.visible = true;
 
   requestAnimationFrame(render);
-  
+
   renderer.render(scene, camera);
 };
 
