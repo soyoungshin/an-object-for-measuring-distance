@@ -35,21 +35,28 @@ new THREE.TextureLoader().load(
     backgroundMesh.position.z = -5;
     scene.add(backgroundMesh);
 
-    var frontPlane = new THREE.PlaneGeometry(15, 15,0);
+    var frontPlane = new THREE.PlaneGeometry(18, 18,0);
     var fgMaterial = new THREE.MeshBasicMaterial({map: bgTexture});
     var foregroundMesh = new THREE.Mesh(frontPlane, fgMaterial);
     foregroundMesh.position.z = 5;
     foregroundMesh.material.side = THREE.DoubleSide;
     scene.add(foregroundMesh);        
     
-    var cubeGeom = new THREE.BoxGeometry(16,16,16);
+    var cubeGeom = new THREE.BoxGeometry(20, 20, 20);
     var cubeMat = [
-      new THREE.MeshBasicMaterial({color: 0xffaaff}),
-      new THREE.MeshBasicMaterial({color: 0xaaffff}),
-      new THREE.MeshBasicMaterial({color: 0xffffaa}),
-      new THREE.MeshBasicMaterial({color: 0xaaaaff}),
-      new THREE.MeshBasicMaterial({color: 0xffaaaa}),
-      new THREE.MeshBasicMaterial({color: 0xaaffaa})
+//       new THREE.MeshBasicMaterial({color: 0xffaaff}),
+//       new THREE.MeshBasicMaterial({color: 0xaaffff}),
+//       new THREE.MeshBasicMaterial({color: 0xffffaa}),
+//       new THREE.MeshBasicMaterial({color: 0xaaaaff}),
+//       new THREE.MeshBasicMaterial({color: 0xffaaaa}),
+//       new THREE.MeshBasicMaterial({color: 0xaaffaa})
+      
+      new THREE.MeshBasicMaterial({map: bgTexture}),
+      new THREE.MeshBasicMaterial({map: bgTexture}),
+      new THREE.MeshBasicMaterial({map: bgTexture}),
+      new THREE.MeshBasicMaterial({map: bgTexture}),
+      new THREE.MeshBasicMaterial({map: bgTexture}),
+      new THREE.MeshBasicMaterial({map: bgTexture})
     ];
     var cube = new THREE.Mesh(cubeGeom, new THREE.MeshFaceMaterial(cubeMat));
     for (var i = 0; i < cubeMat.length; i++) {
@@ -191,10 +198,10 @@ var indices = [
 11, 10, 13,
 10, 12, 13,
 12, 11, 13
-// ,
-// 11, 12, 14,
-// 12, 5, 14,
-// 5, 11, 14
+,
+11, 12, 14,
+12, 5, 14,
+5, 11, 14
 ];
     
 var dodecGeom = new THREE.PolyhedronGeometry(vertices, indices, 2, 0);
