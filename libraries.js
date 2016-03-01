@@ -11248,6 +11248,14 @@ var Application = (function($) {
 
         cube = new THREE.Mesh(cubeGeom, material);
         scene.add(cube);
+
+
+        // after cube loads, animate in everything.
+        $("#overlay").delay(800).fadeOut(2500);
+        $(".welcome").delay(3500).fadeIn(2500).delay(10000).fadeOut(2500);
+        $("#userImage").delay(19500).fadeIn(2500);
+        $("#hireMe").delay(33500).fadeIn(2500);
+
       }
     );
 
@@ -11352,7 +11360,6 @@ var Application = (function($) {
     });
 
     $(document).keyup(function(e) {
-      console.log("hey");
       if(e.keyCode == 32) {
         fifthWall = !fifthWall;
 
@@ -11368,12 +11375,6 @@ var Application = (function($) {
         }
       }
     });
-  }
-
-  function setupStyling() {
-    $(".welcome").delay(10000).fadeOut(2500);
-    $("#userImage").delay(16000).fadeIn(2500);
-    $("#hireMe").delay(30000).fadeIn(2500);
   }
 
   function render() {
@@ -11403,7 +11404,6 @@ var Application = (function($) {
     init: function(){
       setupScene();
       setupInteractivity();
-      setupStyling();
       render();
      }
   };
