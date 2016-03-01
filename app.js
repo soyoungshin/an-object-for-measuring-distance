@@ -505,7 +505,11 @@ var Application = (function($) {
       isDragging = false,
       mirrorCamera = new THREE.CubeCamera(0.1, 1000, 512),
       renderer = new THREE.WebGLRenderer({ antialias: true }),
-      scene = {};
+      scene = {},
+      fifthWall = false,
+      intervalX = 0.006,
+      intervalY = 0.006,
+      intervalZ = 0.003;
 
 
   // helpers
@@ -567,7 +571,6 @@ var Application = (function($) {
         });
 
         object.position.z = -4;
-        object.scale.set(0.06, 0.06, 0.06);
         dodec = object;
 
         scene.add(object);
@@ -619,17 +622,20 @@ var Application = (function($) {
     });
 
 
+    $("#userImage").click(function(){
+      $("#userImageHidden").click();
+    });
+
+    $("#userImageHidden").change(function(){});
     // change the image to something the user uploads
-    $("#userImage").change(function() {
+    $("#userImageHidden").change(function() {
       var image = document.createElement("img");
       var texture = new THREE.Texture(image);
-
       image.onload = function(){
 
         texture.needsUpdate = true;
       };
-
-      var userImage = $("#userImage")[0];
+      var userImage = $("#userImageHidden")[0];
       if (userImage.files && userImage.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
@@ -641,8 +647,31 @@ var Application = (function($) {
         reader.readAsDataURL(userImage.files[0]);
       }
     });
+
+    $(document).keyup(function(e) {
+      console.log("hey");
+      if(e.keyCode == 32) {
+        fifthWall = !fifthWall;
+
+        // reset rotation
+        if (fifthWall == false) {
+          cube.rotation.x = 0.0;
+          cube.rotation.y = 0.0;
+          cube.rotation.z = 0.0;
+        } else {
+          intervalX *= Math.random() > 0.5 ? -1 : 1;
+          intervalY *= Math.random() > 0.5 ? -1 : 1;
+          intervalZ *= Math.random() > 0.5 ? -1 : 1;
+        }
+      }
+    });
   }
 
+  function setupStyling() {
+    $(".welcome").delay(10000).fadeOut(2500);
+    $("#userImage").delay(16000).fadeIn(2500);
+    $("#hireMe").delay(30000).fadeIn(2500);
+  }
 
   function render() {
     if (dodecInitialized ) {
@@ -657,6 +686,12 @@ var Application = (function($) {
       dodec.rotation.x += 0.003;
       dodec.rotation.y += 0.003;
     }
+
+    if (fifthWall) {
+      cube.rotation.x += intervalX;
+      cube.rotation.y += intervalY;
+      cube.rotation.z += intervalZ;
+    }
     renderer.render(scene, camera);
   }
 
@@ -665,6 +700,7 @@ var Application = (function($) {
     init: function(){
       setupScene();
       setupInteractivity();
+      setupStyling();
       render();
      }
   };

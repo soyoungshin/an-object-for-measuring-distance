@@ -1,22 +1,83 @@
-/* line 4, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
+/* line 5, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
 body {
-  margin: 0; }
+  margin: 0;
+  font: 100% "Montserrat", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: white; }
 
-/* line 8, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
+/* line 13, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
 canvas {
   width: 100%;
   height: 100%; }
 
-/*
-h1 {
-  font-size: 2em;
-  margin: 0.5em 0 1em;
+/* line 18, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
+.button {
+  text-decoration: none;
+  cursor: pointer; }
+  /* line 23, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
+  .button:hover {
+    text-decoration: underline; }
 
-  & > small {
-    color: gray;
-    font-size: 70%;
-  }
-}*/
+/* line 29, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
+.items {
+  border: 3px solid white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  text-align: center; }
+
+/* line 37, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
+#welcomeTop {
+  position: absolute;
+  top: 30px;
+  left: 15%;
+  right: 15%; }
+  /* line 43, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
+  #welcomeTop a {
+    color: white; }
+
+/* line 48, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
+#welcomeBottom {
+  position: absolute;
+  bottom: 30px;
+  left: 35%;
+  right: 35%; }
+
+/* line 55, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
+#attribution {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  size: 80%;
+  color: white;
+  font-family: 'Josefin Sans', sans-serif; }
+
+/* line 64, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
+#hireMe {
+  bottom: 30px;
+  right: 30px;
+  position: absolute;
+  color: white;
+  display: none; }
+
+/* line 72, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
+#userImage {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  line-height: 150%;
+  display: none; }
+
+/* line 80, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
+#userImageHidden {
+  display: none;
+  top: 20px;
+  right: 20px;
+  position: absolute; }
+
+/* line 88, /Users/soyoung/Dropbox/Development/web doodles/threejs/aofmd/app/styles/main.scss */
+.smaller {
+  font-size: 80%; }
 
 
 /*# sourceMappingURL=app.css.map*/

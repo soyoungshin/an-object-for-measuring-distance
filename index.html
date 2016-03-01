@@ -4,9 +4,15 @@
     <meta charset="utf-8">
     <title>An object for measuring distance - virtual version!!!</title>
     <link rel="stylesheet" href="app.css">
+  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans|Montserrat' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <input id="userImage" type="file" style="position: absolute; top: 20px; left: 20px;"/>
+    <div class="welcome items" id="welcomeTop">welcome to the web version of <a href="http://soyoungshin.com/An-object-for-measuring-distance">An Object For Measuring Distance</a></div>
+    <div class="welcome items" id="welcomeBottom">You are in Malibu.</div>
+    <a id="attribution" href="http://www.soyoungshin.com">soyoungshin.com</a>
+    <div id="userImage" class="button items">Take me elsewhere<br /><span class="smaller">(upload an image)</span></div>
+    <input id="userImageHidden" type="file" />
+    <a href="mailto:she@soyoungshin.com?subject=I%20want%20to%20hire%20you." id="hireMe" class="button items">Hire me.</a>
     <script src="libraries.js"></script>
     <script src="app.js"></script>
     <!--<script>var a = require('application'); a.setupScene(); a.render(); a.init();</script> -->
